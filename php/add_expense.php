@@ -1,17 +1,11 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_bgt";
 $user_id = $_SESSION['user_id'];
 try {
     
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
     
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
    
     $expenseName = isset($_POST['expense_name']) ? $_POST['expense_name'] : null;
