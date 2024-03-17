@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbdd57;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 70px auto 20px;
+  /* Adjusted margin to account for navbar height */
+  padding: 0 20px;
+  background-color: #fbdd57;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.navbar-title {
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 80px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  font-family: "Poppins", sans-serif;
+  right: 20%;
+  background-color: #ead9d9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 20px;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Budget and Expense Tracker Styles */
+#budget-tracker,
+#expense-tracker {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#budget-tracker {
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  display: inline-flex;
+  justify-content: space-evenly;
+}
+#inputs {
+  display: inline-flex;
+  background-color: blue;
+  padding: 20px;
+  flex-direction: column;
+}
+/*  
+    #bgtCal{
+         margin-right: 300px;
+    } */
+.inline-ni {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+#budget-tracker h2,
+#expense-tracker h2 {
+  margin-bottom: 20px;
+}
+
+#budget-tracker input[type="number"],
+#budget-tracker input[type="date"],
+#expense-tracker input[type="text"],
+#expense-tracker input[type="number"],
+#expense-tracker input[type="date"] {
+  width: calc(50% - 10px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#budget-tracker button,
+#expense-tracker button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#budget-tracker button:hover,
+#expense-tracker button:hover {
+  background-color: #555;
+}
+
+#budget-tracker button + button,
+#expense-tracker button + button {
+  margin-left: 10px;
+}
+
+.inline {
+  display: inline-block;
+  margin: 47px;
+  font-size: 37px;
+}
+
+.BandE {
+  font-family: "Baumans", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#and {
+  font-family: "Poppins", sans-serif;
+}
+
+.hero {
+  width: 100%;
+  height: 42em;
+  display: inline-flex;
+  width: 100%;
+  height: 42em;
+  justify-content: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+}
+
+#msg {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin-top: 120px;
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .navbar-title {
+    font-size: 1.2rem;
+  }
+}

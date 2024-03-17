@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $pdo->prepare("INSERT INTO users (username,full_name, email, password) VALUES (:username,:full_name, :email, :password)");
             $stmt->execute(['username' => $username,'full_name' => $full_name, 'email' => $email, 'password' => $password]);
             
-            header("Location: index.php");
+            header("Location: ../index.php");
             exit;
         }
     } catch (PDOException $e) {

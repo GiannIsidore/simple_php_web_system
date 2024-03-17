@@ -1,37 +1,11 @@
-// // Add event listeners once the DOM is fully loaded
-// function toggleDropdown() {
-//   console.log("Toggle dropdown function called");
-//   var dropdownMenu = document.getElementById("dropdown-menu");
-//   console.log("Dropdown menu:", dropdownMenu);
-//   dropdownMenu.classList.toggle("show");
-//   console.log("Dropdown menu class:", dropdownMenu.className);
-// }
-
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function (event) {
-//   if (!event.target.matches(".profile-image")) {
-//     var dropdowns = document.getElementsByClassName("dropdown-content");
-//     var i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       var openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains("show")) {
-//         openDropdown.classList.remove("show");
-//       }
-//     }
-//   }
-// };
-
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("save-budget").addEventListener("click", saveBudget);
-
   document
     .getElementById("show-calendar")
     .addEventListener("click", showCalendar);
-
   document
     .getElementById("show-history")
     .addEventListener("click", showHistory);
-
   document.getElementById("add-expense").addEventListener("click", addExpense);
 });
 
@@ -57,8 +31,9 @@ function showCalendar() {
 }
 
 function showHistory() {
+  console.log("showing history Budget...");
   const xhr = new XMLHttpRequest();
-  xhr.open("GET", "fetch_budget_history.php", true);
+  xhr.open("GET", "../functions/fetch_budget_history.php", true);
   xhr.onload = function () {
     if (xhr.status == 200) {
       // Parse JSON response
@@ -92,7 +67,7 @@ function saveBudget() {
   const endDate = document.getElementById("end-date").value;
 
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "save_budget.php", true);
+  xhr.open("POST", "../functions/save_budget.php", true);
   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.onload = function () {
     if (xhr.status == 200) {
@@ -103,26 +78,42 @@ function saveBudget() {
   };
   xhr.send(`budget=${budget}&start_date=${startDate}&end_date=${endDate}`);
 }
+// function addExpense() {
+//   console.log("Adding Expense...");
 
-function addExpense() {
-  console.log("Adding Expense...");
+//   const product = document.getElementById("expense-name").value;
+//   const quantity = document.getElementById("quantity").value;
+//   const price = document.getElementById("price").value;
+//   const purchaseDate = document.getElementById("purchase-date").value;
+//   console.log(product, quantity, price, purchaseDate);
+//   const xhr = new XMLHttpRequest();
+//   xhr.open("POST", "../functions/add_expense.php", true);
+//   xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//   xhr.onload = function () {
+//     if (xhr.status == 200) {
+//       console.log(xhr.responseText);
+//       // Refresh the table after adding expense
+//       fetchExpenses();
+//     } else {
+//       console.error("Error adding expense:", xhr.status);
+//     }
+//   };
+//   xhr.send(
+//     `product=${product}&quantity=${quantity}&price=${price}&purchase-date=${purchaseDate}`
+//   );
+// }
+// Fetch expenses and append them to the table
+// function fetchExpenses() {
+//   fetch("../functions/fetch_expenses.php")
+//     .then((response) => response.text())
+//     .then((data) => {
+//       // Append the fetched HTML code to the expense-list section
+//       document.getElementById("expense-list").innerHTML = data;
+//     })
+//     .catch((error) => console.error("Error:", error));
+// }
 
-  const expenseName = document.getElementById("expense-name").value;
-  const quantity = document.getElementById("quantity").value;
-  const price = document.getElementById("price").value;
-  const purchaseDate = document.getElementById("purchase-date").value;
-
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "add_expense.php", true);
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onload = function () {
-    if (xhr.status == 200) {
-      console.log(xhr.responseText);
-    } else {
-      console.error("Error adding expense:", xhr.status);
-    }
-  };
-  xhr.send(
-    `expense_name=${expenseName}&quantity=${quantity}&price=${price}&purchase_date=${purchaseDate}`
-  );
-}
+// // Call the fetchExpenses function when the page loads
+// document.addEventListener("DOMContentLoaded", function () {
+//   fetchExpenses();
+// });

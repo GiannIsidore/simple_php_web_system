@@ -20,18 +20,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pdo = new PDO($dsn, $username_db, $password_db, $options);
 
             // Check if username or email exists
-           $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :usernameOrEmail OR email = :email");
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :usernameOrEmail OR email = :email");
 
             $stmt->execute([
-    'usernameOrEmail' => $usernameOrEmail,
-    'email' => $usernameOrEmail // Pass the same value for email
-]);
+                'usernameOrEmail' => $usernameOrEmail,
+                'email' => $usernameOrEmail // Pass the same value for email
+            ]);
 
             $user = $stmt->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
-                header("Location: bgt.php");
+                $_SESSION['login_success'] = true; // Set session variable for successful login
+                sleep(1.5);
+                header("Location:../functions/bgt.php");
                 exit;
             } else {
                 echo "Invalid username/email or password";
