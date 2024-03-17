@@ -28,6 +28,11 @@ if ($conn->connect_error) {
 $expense_name = isset($_POST['expense-name']) ? trim($_POST['expense-name']) : '';
 $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : '';
 $price = isset($_POST['price']) ? $_POST['price'] : '';
+
+// Debugging: Output the value of purchase_date before and after conversion
+echo "Purchase Date (before conversion): " . $purchase_date . "<br>";
+
+// Validate and format the purchase date
 $purchase_date = isset($_POST['purchase-date']) ? $_POST['purchase-date'] : '';
 if (!empty($purchase_date)) {
     // Validate the date format
@@ -40,6 +45,9 @@ if (!empty($purchase_date)) {
 } else {
     exit("Purchase date is required.");
 }
+
+// Debugging: Output the value of purchase_date after conversion
+echo "Purchase Date (after conversion): " . $purchase_date . "<br>";
 
 $user_id = $_SESSION['user_id'];
 
@@ -56,7 +64,8 @@ if (!$stmt) {
     exit("Prepare failed: (" . $conn->errno . ") " . $conn->error);
 }
 
-$stmt->bind_param("sdsii", $expense_name, $quantity, $price, $purchase_date, $user_id);
+$stmt->bind_param("sddsi", $expense_name, $quantity, $price, $purchase_date, $user_id);
+
 
 if (!$stmt->execute()) {
     // Handle database error (e.g., redirect to an error page or display a message)
