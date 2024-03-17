@@ -9,25 +9,69 @@ body {
   margin: 70px auto 20px;
   /* Adjusted margin to account for navbar height */
   padding: 0 20px;
-  background-color: #fbdd57;
+  background-color: #f1d55500;
 }
 
-.navbar {
+#navbar {
+  display: inline-flex;
+  justify-content: space-between;
+
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: white;
+  background-color: #1f1f1f00;
+  /* Or whatever background color you want */
   z-index: 1000;
+  text-shadow: -3px 4.5px 2px #1f1f1fc2;
+  /* Adjust z-index as needed to ensure it's above other content */
+  transition: text-shadow 1s ease, background-color 0.3s ease, color 0.3s ease;
+
+  /* Add smooth transition */
+  padding-bottom: -30px;
+  margin-bottom: -30px;
+  height: fit-content;
+}
+
+#navbar a {
+  font-size: 20px;
+  color: #371a1a;
+  text-decoration: none;
+}
+
+#navbar a:hover {
+  font-size: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: #d00606;
+}
+
+.wrapper .btn {
+  background-color: transparent;
+}
+
+#navbar.scrolled {
+  color: #fbdd57;
+  background-color: #8c1818;
+  text-shadow: 2px 2px 2px #1f1f1fc2;
+  /* Change to desired color */
+}
+
+#navbar.scrolled .wrapper {
+  --font-color-dark: #ffffff;
+  --font-color-light: #8c1818;
+  --bg-color: #8c1818;
+  --main-color: #fbdd57;
+
+  /* Change to desired color */
 }
 
 .navbar-title {
+  font-family: "Poppins", sans-serif;
   font-size: 3rem;
-  font-weight: 1000;
+  font-weight: 900;
+  padding-left: 30px;
 }
 
 .navbar-profile {
@@ -36,8 +80,9 @@ body {
 }
 
 .profile-image {
-  width: 40px;
-  height: 40px;
+  margin-top: 2px;
+  width: 53px;
+  height: 51px;
   border-radius: 50%;
   margin-right: 80px;
   cursor: pointer;
@@ -46,6 +91,7 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
+  text-shadow: 0px 0px 0px #1f1f1f00;
 }
 
 .dropdown-content {
@@ -87,26 +133,34 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 #budget-tracker {
+  font-family: "Poppins", sans-serif;
   background-color: rgba(0, 0, 0, 0);
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   display: inline-flex;
   justify-content: space-evenly;
 }
+
 #inputs {
+  font-family: "Poppins", sans-serif;
   display: inline-flex;
-  background-color: blue;
+  width: 250px;
+  color: white;
+  background-color: #1d1b1b;
   padding: 20px;
+  border-radius: 14px;
   flex-direction: column;
 }
+
 /*  
     #bgtCal{
          margin-right: 300px;
     } */
 .inline-ni {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-right: 20px;
 }
+
 #budget-tracker h2,
 #expense-tracker h2 {
   margin-bottom: 20px;
@@ -146,27 +200,37 @@ body {
 }
 
 .inline {
-  display: inline-block;
-  margin: 47px;
-  font-size: 37px;
+  margin-left: -20px;
+  font-size: 100px;
+  padding-right: 180px;
+}
+
+.inline p {
+  text-shadow: -8px 5px 4px #1d1b1b;
+  font-weight: 800;
+  margin: 0;
+}
+
+#hero.hero scrolled {
+  text-shadow: 10px 5px 4px #1d1b1b;
 }
 
 .BandE {
+  color: #ff0000;
   font-family: "Baumans", system-ui;
   font-weight: 400;
   font-style: normal;
 }
 
 #and {
-  font-family: "Poppins", sans-serif;
+  font-family: "Indie Flower", cursive;
 }
 
 .hero {
   width: 100%;
-  height: 42em;
+  height: 53em;
   display: inline-flex;
-  width: 100%;
-  height: 42em;
+
   justify-content: center;
   align-content: space-around;
   flex-wrap: wrap;
@@ -174,8 +238,219 @@ body {
 
 #msg {
   font-size: 20px;
+  background-color: #a10404cd;
+  padding: 30px 30px 20px 30px;
+  border-radius: 10px;
 }
+
 #Hello {
+  color: #ffffde;
+}
+
+#Username {
+  color: #d00606;
+}
+
+#pro_us {
+  text-align: left;
+  margin-top: -8px;
+  margin-left: -30px;
+  letter-spacing: 1.5px;
+  font-family: "Poppins", sans-serif;
+  text-shadow: 1px 2px #323232;
+}
+
+#msglng {
+  color: #e3e3ca;
+}
+
+/*  */
+.wrapper {
+  --font-color-dark: #323232;
+  --font-color-light: #fff;
+  --bg-color: #fff;
+  --main-color: #323232;
+  margin-top: 19px;
+  position: relative;
+  width: 558px;
+  height: 36px;
+  background-color: var(--bg-color);
+  border: 2px solid var(--main-color);
+  border-radius: 34px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 4px 4px var(--main-color);
+  text-shadow: 0px 0px 0px;
+  justify-content: space-around;
+}
+
+.option {
+  width: 133.5px;
+  height: 28px;
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  appearance: none;
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.span {
+  color: var(--font-color-dark);
+}
+
+.input:checked + .btn {
+  background-color: var(--main-color);
+}
+
+.input:checked + .btn .span {
+  color: var(--font-color-light);
+}
+
+img {
+  box-shadow: 0 4px 8px #1d1b1b;
+  /* Horizontal offset, vertical offset, blur radius, and color */
+}
+
+#bgtCal {
+  width: 50em;
+  margin-top: -20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#budget-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-cell {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+#greet {
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #1d1b1bf1;
+  margin-left: -80px;
+}
+
+#bg-his {
+  width: 350px;
+  color: whitesmoke;
+  margin-left: 20px;
+  background-color: black;
+}
+
+/* Style for Expense Tracker section */
+#expense-tracker {
+  width: 100%;
+  flex-direction: row-reverse;
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for Expense Tracker form */
+#add-expense-form {
+  margin-bottom: 20px;
+}
+
+#add-expense-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#add-expense-form input[type="text"],
+#add-expense-form input[type="number"],
+#add-expense-form input[type="date"] {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#add-expense-form button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-expense-form button[type="submit"]:hover {
+  background-color: #555;
+}
+
+/* Style for Expense Tracker table */
+#expense-table {
+  width: 70%;
+  border-collapse: collapse;
+}
+
+#expense-table th,
+#expense-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+#expense-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+#expense-table td {
+  background-color: #fff;
+}
+
+#expense-table .edit-btn,
+#expense-table .delete-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+#expense-table .edit-btn:hover,
+#expense-table .delete-btn:hover {
+  background-color: #555;
 }
 
 @media only screen and (max-width: 600px) {

@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("change", function () {
       const targetId = this.value;
       let targetElement;
-      if (targetId === "hero") {
-        targetElement = document.getElementById("hero");
+      if (targetId === "con") {
+        targetElement = document.getElementById("con");
       } else if (targetId === "scroll") {
         targetElement = document.getElementById("scroll");
       } else if (targetId === "add-expense-form") {
