@@ -78,6 +78,38 @@ function saveBudget() {
   };
   xhr.send(`budget=${budget}&start_date=${startDate}&end_date=${endDate}`);
 }
+
+// Assuming you're using jQuery for simplicity
+$(document).ready(function () {
+  // Edit button click event handler
+  $(".edit-btn").click(function () {
+    var expenseId = $(this).data("expense-id");
+    // Redirect to edit expense page with the expense ID
+    window.location.href = "edit_expense.php?expense_id=" + expenseId;
+  });
+
+  // Delete button click event handler
+  $(".delete-btn").click(function () {
+    if (confirm("Are you sure you want to delete this expense?")) {
+      var expenseId = $(this).data("expense-id");
+      // Send AJAX request to delete expense
+      $.ajax({
+        url: "delete_expense.php",
+        method: "POST",
+        data: { expense_id: expenseId },
+        success: function (response) {
+          // Reload the page after successful deletion
+          location.reload();
+        },
+        error: function (xhr, status, error) {
+          // Handle error, if any
+          console.error(xhr.responseText);
+        },
+      });
+    }
+  });
+});
+
 // function addExpense() {
 //   console.log("Adding Expense...");
 

@@ -399,6 +399,7 @@ try {
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Purchase Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="expense-list">
@@ -409,6 +410,7 @@ try {
 
         <div id="feedback-messages"></div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/indexJS/script.js"></script>
 </body>
 
