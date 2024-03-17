@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    // Redirect to login page if user is not logged in
-    header("Location: login.php");
-    exit;
-}
-
 // Database connection
 $dsn = 'mysql:host=localhost;dbname=db_bgt';
 $username_db = 'root';
@@ -36,8 +30,15 @@ try {
     exit;
 }
 
-// Handle image upload
+// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Update user data in the database
+    $full_name = $_POST['full_name'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password']; // New password
+
+    // Check if a new profile image is uploaded
     if ($_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
         $image_tmp_name = $_FILES['profile_image']['tmp_name'];
         $image_data = file_get_contents($image_tmp_name); // Read image data
@@ -45,18 +46,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Update profile image data in the database
         $stmt = $pdo->prepare("UPDATE users SET profile_image = :image_data WHERE id = :user_id");
         $stmt->execute(['image_data' => $image_data, 'user_id' => $_SESSION['user_id']]);
-        
-        // Redirect to profile settings page after image upload
-        header("Location:../hm/prof_settings.php");
-        exit;
-    } else {
-        echo "Error uploading image.";
     }
+
+    // Update other user data
+    $stmt = $pdo->prepare("UPDATE users SET full_name = :full_name, username = :username, email = :email WHERE id = :user_id");
+    $stmt->execute(['full_name' => $full_name, 'username' => $username, 'email' => $email, 'user_id' => $_SESSION['user_id']]);
+
+    // If a new password is provided, update it
+    if (!empty($password)) {
+        // Hash the new password before storing it in the database
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $pdo->prepare("UPDATE users SET password = :password WHERE id = :user_id");
+        $stmt->execute(['password' => $hashed_password, 'user_id' => $_SESSION['user_id']]);
+    }
+
+    // Redirect to profile settings page after changes
+    header("Location:../hm/prof_settings.php");
+    exit;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -133,22 +145,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endif; ?>
 
         <form method="post" enctype="multipart/form-data">
+            <!-- Profile Image Upload -->
             <div class="form-group">
                 <label for="profile_image">Profile Image:</label>
                 <input type="file" id="profile_image" name="profile_image">
             </div>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="<?php echo $user['username']; ?>" readonly>
-            </div>
+            <!-- Full Name -->
             <div class="form-group">
                 <label for="full_name">Full Name:</label>
                 <input type="text" id="full_name" name="full_name" value="<?php echo $user['full_name']; ?>">
             </div>
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="<?php echo $user['username']; ?>">
+            </div>
+            <!-- Email -->
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>">
             </div>
+            <!-- New Password -->
+            <div class="form-group">
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <!-- Submit Button -->
             <div class="form-group">
                 <input type="submit" value="Save Changes">
                 <input type="button" value="Back" onclick="window.location.href='../hm/functions/bgt.php'">
