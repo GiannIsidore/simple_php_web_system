@@ -26,8 +26,8 @@ body {
 }
 
 .navbar-title {
-  font-size: 2rem;
-  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  font-weight: 1000;
 }
 
 .navbar-profile {
@@ -175,6 +175,8 @@ body {
 #msg {
   font-size: 20px;
 }
+#Hello {
+}
 
 @media only screen and (max-width: 600px) {
   .container {
@@ -183,9 +185,5 @@ body {
 
   .navbar {
     padding: 10px;
-  }
-
-  .navbar-title {
-    font-size: 1.2rem;
   }
 }

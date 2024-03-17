@@ -1,3 +1,38 @@
+window.addEventListener("scroll", function () {
+  var navbar = document.getElementById("navbar");
+  var hero = document.getElementById("hero");
+  if (window.scrollY > 0) {
+    console.log("scrolled");
+    navbar.classList.add("scrolled");
+    hero.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+    hero.classList.remove("scrolled");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const inputs = document.querySelectorAll(".input");
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", function () {
+      const targetId = this.value;
+      let targetElement;
+      if (targetId === "hero") {
+        targetElement = document.getElementById("hero");
+      } else if (targetId === "scroll") {
+        targetElement = document.getElementById("scroll");
+      } else if (targetId === "add-expense-form") {
+        targetElement = document.getElementById("add-expense-form");
+      }
+
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("save-budget").addEventListener("click", saveBudget);
   document

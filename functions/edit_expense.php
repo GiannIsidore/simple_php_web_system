@@ -45,19 +45,26 @@ if ($result->num_rows == 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Expense</title>
+    <link rel="stylesheet" href="../css/edit_ex.css">
 </head>
 
 <body>
-    <h2>Edit Expense</h2>
-    <form action="update_expense.php" method="POST">
-        <input type="hidden" name="expense_id" value="<?php echo $expense['id']; ?>">
-        Expense Name: <input type="text" name="expense_name" value="<?php echo $expense['product']; ?>"><br>
-        Quantity: <input type="number" name="quantity" value="<?php echo $expense['quantity']; ?>"><br>
-        Price: <input type="number" name="price" value="<?php echo $expense['price']; ?>"><br>
-        Purchase Date: <input type="date" name="purchase_date" value="<?php echo $expense['purchase_date']; ?>"><br>
-        <input type="submit" value="Update Expense">
-    </form>
+    <div id="container">
+        <h2>Edit Expense</h2>
+        <form action="update_expense.php" method="POST">
+            <input type="hidden" name="expense_id" value="<?php echo $expense['id']; ?>">
+            Expense Name: <input type="text" name="expense_name" value="<?php echo $expense['product']; ?>"><br>
+            Quantity: <input type="number" name="quantity" value="<?php echo $expense['quantity']; ?>"><br>
+            Price: <input type="number" name="price" value="<?php echo $expense['price']; ?>"><br>
+            Purchase Date: <input type="date" name="purchase_date" value="<?php echo $expense['purchase_date']; ?>"><br>
+            <input type="submit" value="Update Expense"><br>
+
+
+        </form>
+    </div>
+
 </body>
+
 
 </html>
 <?php
