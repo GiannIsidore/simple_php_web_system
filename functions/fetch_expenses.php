@@ -31,13 +31,13 @@ if ($result->num_rows > 0) {
     // Output data of each row
     while($row = $result->fetch_assoc()) {
         // Output each expense as a table row
-        echo "<tr>";
-        echo "<td>" . $row["product"] . "</td>";
-        echo "<td>" . $row["quantity"] . "</td>";
-        echo "<td>" . $row["price"] . "</td>";
-        echo "<td>" . $row["purchase_date"] . "</td>";
+        echo "<tr id='trnia'>";
+        echo "<td class='tdnia'>" . $row["product"] . "</td>";
+        echo "<td class='tdnia'>" . $row["quantity"] . "</td>";
+        echo "<td class='tdnia'>" . $row["price"] . "</td>";
+        echo "<td class='tdnia'>" . $row["purchase_date"] . "</td>";
         // Add "Edit" and "Delete" buttons with unique identifiers
-        echo "<td>";
+        echo "<td class='tdAct'>";
         echo "<button class='edit-btn' data-expense-id='" . $row["id"] . "'>Edit</button>";
         echo "<button class='delete-btn' data-expense-id='" . $row["id"] . "'>Delete</button>";
         echo "</td>";

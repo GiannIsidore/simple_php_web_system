@@ -55,15 +55,14 @@ try {
 
 </head>
 
+
 <body>
     <!-- Navbar -->
     <nav id="navbar">
         <div class="navbar-title">
             BUDGET NA UY
         </div>
-        <!-- <a href="#hero">Home</a>
-        <a href="#scroll">BUDGET</a>
-        <a href="#add-expense-form">EXPENSE</a> -->
+
         <div class="wrapper">
             <div class="option">
                 <input class="input" type="radio" name="btn" value="con" id="1" checked="">
@@ -201,11 +200,11 @@ try {
             <table id="expense-table">
                 <thead>
                     <tr>
-                        <th>Expense Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Purchase Date</th>
-                        <th>Actions</th>
+                        <th class="thNia">Expense Name</th>
+                        <th class="thNia">Quantity</th>
+                        <th class="thNia">Price</th>
+                        <th class="thNia">Purchase Date</th>
+                        <th class="thNia">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="expense-list">

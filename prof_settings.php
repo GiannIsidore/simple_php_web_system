@@ -65,16 +65,116 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Settings</title>
     <link rel="stylesheet" href="css/pro_set.css">
+    <style>
+    /* Style for the overlay */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        /* Ensure it appears on top of other content */
+    }
+
+    /* Style for the video element */
+    .overlay video {
+        max-width: 80%;
+        /* Adjust as needed */
+        max-height: 80%;
+        /* Adjust as needed */
+    }
+    </style>
+    <script>
+    function openCamera() {
+        const constraints = {
+            video: true
+        };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function(stream) {
+                console.log('Camera access successful');
+                const overlay = document.createElement('div');
+                overlay.classList.add('overlay');
+
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.autoplay = true;
+
+                overlay.appendChild(video);
+                document.body.appendChild(overlay);
+
+                const closeButton = document.createElement('button');
+                const changePicButton = document.createElement('button');
+                closeButton.textContent = 'Close Camera';
+                changePicButton.textContent = 'Change Profile Pic';
+                closeButton.onclick = function() {
+                    stream.getTracks().forEach(track => track.stop());
+                    document.body.removeChild(overlay); // Remove the overlay
+                    window.location.href = "prof_settings.php";
+                };
+
+                changePicButton.onclick = function() {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+
+                    // Set canvas dimensions same as video
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+
+                    // Draw video frame onto canvas
+                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                    // Convert canvas content to base64 data URL
+                    const imageDataUrl = canvas.toDataURL('image/jpeg');
+
+                    // Send the image data to server using AJAX or form submission
+                    const formData = new FormData();
+                    formData.append('profile_image', imageDataUrl);
+
+
+                    // formData.append('user_id', <?php echo $_SESSION['user_id']; ?>);
+
+
+                    fetch('update_profile_pic.php', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (response.ok) {
+
+                                console.log('Profile picture updated successfully');
+                            } else {
+                                // Handle error
+                                console.error('Failed to update profile picture');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error updating profile picture:', error);
+                        });
+                };
+
+                overlay.appendChild(closeButton);
+                overlay.appendChild(changePicButton);
+            })
+            .catch(function(error) {
+                console.error('Error accessing camera:', error);
+            });
+    }
+    </script>
 </head>
 
 <body>
@@ -92,8 +192,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="post" enctype="multipart/form-data">
             <!-- Profile Image Upload -->
             <div class="form-group">
-                <label for="profile_image">Profile Image:</label>
-                <input type="file" id="profile_image" name="profile_image">
+                <div style="display: flex; flex-direction: row;">
+                    <label for="profile_image">Profile Image: </label>
+                    <input type="file" id="profile_image" name="profile_image"> <button type="button"
+                        popovertarget="pop" id="webcamButton" onclick="openCamera()">Open Cam</button>
+
+
+                </div>
+                <div id="camera-div"></div>
             </div>
             <!-- Full Name -->
             <div class="form-group">

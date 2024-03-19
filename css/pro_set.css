@@ -1,24 +1,41 @@
-/* CSS styles remain the same as provided in the previous example */
+/* pro_set.css */
+
 body {
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 50%;
+  margin: 50px auto;
+  background-color: #fff;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
 }
 
 .profile-img {
-  width: 150px;
+  display: block;
+  margin: 20px auto;
+  width: 162px;
   height: 150px;
   border-radius: 50%;
-  /* creates circular shape */
-  object-fit: cover;
-  margin-bottom: 20px;
+  background-color: #45a049;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 .form-group {
@@ -26,29 +43,52 @@ body {
 }
 
 label {
+  display: block;
   font-weight: bold;
+  color: #666;
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="submit"],
+input[type="button"] {
   width: 100%;
   padding: 10px;
-  border-radius: 5px;
+  margin-top: 5px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   box-sizing: border-box;
+  font-size: 16px;
+}
+
+input[type="file"] {
+  padding: 5px;
 }
 
 input[type="submit"],
 input[type="button"] {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #4caf50;
+  color: white;
   cursor: pointer;
 }
 
 input[type="submit"]:hover,
 input[type="button"]:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+}
+#profile_image {
+  width: 110px;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
 }

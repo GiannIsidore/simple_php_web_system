@@ -77,9 +77,9 @@ function showHistory() {
       // Generate table HTML
       const table = document.createElement("table");
       table.innerHTML =
-        "<thead><tr><th>Date</th><th>Budget</th></tr></thead><tbody>";
+        "<thea class='tthead'd><tr class='ttrow'><th class='thead'>Date</th><th class='thead'>Budget</th></tr></thea><tbody>";
       budgetHistory.forEach((entry) => {
-        table.innerHTML += `<tr><td>${entry.start_date}</td><td>${entry.amount}</td></tr>`;
+        table.innerHTML += `<tr class='trow'><td class='tdata'>${entry.start_date}</td><td class='tdata'>${entry.amount}</td></tr>`;
       });
       table.innerHTML += "</tbody>";
 
