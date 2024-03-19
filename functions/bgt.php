@@ -113,11 +113,14 @@ try {
             <div class="inline">
                 <p class="BandE">Budget</p>
                 <p id="and">and</p>
-                <p class="BandE"> Expense Tracker</p>
+                <p class="BandE"> Expense <br>Tracker</p>
             </div>
             <div id="greet">
-                <h1 id="Hello">HELLO,<h1 id="Username"><?php echo $user['username']; ?></h1>
-                </h1>
+                <div id="helloName">
+                    <h1 id="Hello">HELLO,<h1 id="Username"><?php echo $user['username']; ?></h1>
+                    </h1>
+                </div>
+
                 <br>
 
                 <div id="msg">
@@ -157,7 +160,7 @@ try {
 
 
 
-            <div class='inline-ni' style="display: inline-flex;">
+            <div class='inline-ni' id="bgt_out" style="display: inline-flex;">
                 <div id="bgtCal">
                     <h1>CALENDAR</h1>
                     <div id="budget-calendar">

@@ -1,19 +1,23 @@
 body {
+  justify-content: center;
+  width: 100%;
   background-color: #fbdd57;
 }
 
 .container {
-  width: auto;
+  width: 100%;
   display: inline-flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #navbar {
   display: inline-flex;
-  justify-content: space-between;
-
+  justify-content: space-around;
+  margin-top: -5px;
   position: fixed;
-  top: 0;
+
   left: 0;
   width: 100%;
   color: white;
@@ -21,13 +25,11 @@ body {
 
   z-index: 1000;
   text-shadow: -3px 4.5px 2px #1f1f1fc2;
-  /* Adjust z-index as needed to ensure it's above other content */
+
   transition: text-shadow 1s ease, background-color 0.3s ease, color 0.3s ease;
 
   /* Add smooth transition */
   padding-bottom: -30px;
-  margin-bottom: -30px;
-  height: fit-content;
 }
 
 #navbar a {
@@ -89,6 +91,7 @@ body {
 }
 
 .dropdown {
+  text-align: center;
   position: relative;
   display: inline-block;
   text-shadow: 0px 0px 0px #1f1f1f00;
@@ -142,20 +145,18 @@ body {
   justify-content: space-evenly;
   width: auto;
 }
-
+#bgt_out {
+  width: 77%;
+}
 #inputs {
   font-family: "Poppins", sans-serif;
   display: inline-flex;
-  width: 250px;
+  width: 18%;
   color: white;
   background-color: #1d1b1b;
   padding: 20px;
   border-radius: 14px;
   flex-direction: column;
-}
-
-.inline-ni {
-  margin-right: 20px;
 }
 
 #budget-tracker h2,
@@ -168,7 +169,7 @@ body {
 #expense-tracker input[type="text"],
 #expense-tracker input[type="number"],
 #expense-tracker input[type="date"] {
-  width: calc(50% - 10px);
+  width: 80%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -199,7 +200,6 @@ body {
 .inline {
   margin-left: -20px;
   font-size: 100px;
-  padding-right: 180px;
 }
 
 .inline p {
@@ -250,9 +250,10 @@ body {
 
 #pro_us {
   color: #ffffff;
-  text-align: left;
+  text-align: center;
   margin-top: -5px;
-  margin-left: -35px;
+  margin-right: 80px;
+  /* margin-left: -35px; */
   letter-spacing: 1.5px;
   font-family: "Poppins", sans-serif;
 }
@@ -268,7 +269,7 @@ body {
   --main-color: #323232;
   margin-top: 19px;
   position: relative;
-  width: 558px;
+  width: 25%;
   height: 36px;
   background-color: var(--bg-color);
   border: 2px solid var(--main-color);
@@ -281,7 +282,7 @@ body {
 }
 
 .option {
-  width: 133.5px;
+  width: 50%;
   height: 28px;
   position: relative;
   top: 2px;
@@ -325,7 +326,7 @@ img {
 }
 
 #bgtCal {
-  width: 56em;
+  width: 100%;
   color: white;
   background-color: #890a09;
   padding: 20px;
@@ -344,6 +345,7 @@ img {
 }
 
 .calendar-cell {
+  height: 17%;
   padding: 5px;
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -360,7 +362,7 @@ img {
   padding: 20px;
   border-radius: 15px;
   background-color: #1d1b1bf1;
-  margin-left: -80px;
+  margin: 10px;
 }
 
 #bg-his {
@@ -400,11 +402,14 @@ img {
   -o-border-radius: 2px;
 }
 .tdnia {
+  color: #323232;
+  vertical-align: baseline;
   background-color: #fbdd57;
   text-align: center;
   padding: 5px;
 }
 .tdAct {
+  vertical-align: baseline;
   background-color: #ffffff;
 }
 /* Style for Expense Tracker form */
@@ -494,469 +499,11 @@ img {
   color: #1d1b1b;
   background-color: #890a09;
 }
-/* Style for Expense Tracker table */
-
-@media only screen and (min-width: 1350px) and (max-width: 1471px) {
-  body {
-    margin: 0;
-    padding: 0;
+@media only screen and (max-width: 1024px) {
+  .inline {
+    display: none;
   }
-  .container {
+  #helloName {
     display: flex;
-    justify-items: center;
-  }
-  #navbar {
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    background-color: #8c1818;
-  }
-
-  .container {
-    margin-top: 6em;
-  }
-  /* #budget-tracker {
-    display: block;
-  } */
-  #budget-tracker {
-    display: flex;
-    width: 100%;
-  }
-  #budget-tracker #inputs input {
-    width: 90%;
-  }
-  #bgtCal {
-    max-width: auto;
-    width: 30em;
-  }
-}
-
-/* Media query for screens between 800px and 900px width */
-@media only screen and (min-width: 800px) and (max-width: 900px) {
-  /* Adjustments for screens between 800px and 900px width */
-
-  /* Navbar adjustments */
-  #navbar {
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-    background-color: #8c1818;
-  }
-
-  /* Profile image margin adjustment */
-  .profile-image {
-    margin-right: 5px;
-  }
-  .hero {
-    display: none;
-  }
-
-  /* Navbar title font size adjustment */
-  .navbar-title {
-    padding-left: 5px;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-  }
-
-  /* BandE class font size adjustment */
-  .BandE {
-    font-size: 1.2rem;
-  }
-
-  /* Hero paragraph font size adjustment */
-  .hero p {
-    font-size: 1rem;
-  }
-
-  /* Message paragraph (msglng) font size adjustment */
-  #msglng {
-    font-size: 0.8rem;
-  }
-
-  /* Adjust width and margin for budget calendar and history */
-  #bgtCal,
-  #bg-his {
-    width: calc(100% - 5px);
-    margin-top: 15px;
-  }
-
-  /* Budget and expense tracker padding adjustment */
-  #budget-tracker,
-  #expense-tracker {
-    padding: 15px;
-  }
-
-  /* Inputs and inline-ni margin bottom adjustment */
-  #inputs,
-  .inline-ni {
-    margin-bottom: 15px;
-  }
-
-  /* Navbar padding bottom adjustment */
-  #navbar {
-    padding-bottom: 15px;
-  }
-
-  /* Adjust font size for BandE class */
-  .BandE {
-    font-size: 1.2rem;
-  }
-
-  /* Adjust font size for hero paragraph */
-  .hero p {
-    font-size: 1rem;
-  }
-
-  /* Adjust font size for message paragraph */
-  #msglng {
-    font-size: 0.8rem;
-  }
-
-  /* Adjust width and height of input elements */
-  #budget-tracker input[type="number"],
-  #budget-tracker input[type="date"],
-  #expense-tracker input[type="text"],
-  #expense-tracker input[type="number"],
-  #expense-tracker input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  /* Adjust width and height of buttons */
-  #budget-tracker button,
-  #expense-tracker button,
-  #add-expense-form button[type="submit"] {
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-}
-
-/* Media query for screens up to 780px width */
-@media only screen and (max-width: 780px) {
-  /* Navbar adjustments */
-  #navbar {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    background-color: #8c1818;
-  }
-  .hero {
-    display: none;
-  }
-  /* Profile image margin adjustment */
-  .profile-image {
-    margin-right: 0;
-  }
-
-  /* Navbar title font size adjustment */
-  .navbar-title {
-    padding-left: 0;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-  }
-
-  /* BandE class font size adjustment */
-  .BandE {
-    font-size: 1.5rem;
-  }
-
-  /* Hero paragraph font size adjustment */
-  .hero p {
-    font-size: 1.2rem;
-  }
-
-  /* Message paragraph (msglng) font size adjustment */
-  #msglng {
-    font-size: 1rem;
-  }
-
-  /* Adjust width and margin for budget calendar and history */
-  #bgtCal,
-  #bg-his {
-    width: calc(100% - 10px);
-    margin-top: 20px;
-  }
-
-  /* Budget and expense tracker padding adjustment */
-  #budget-tracker,
-  #expense-tracker {
-    padding: 20px;
-  }
-
-  /* Inputs and inline-ni margin bottom adjustment */
-  #inputs,
-  .inline-ni {
-    margin-bottom: 20px;
-  }
-
-  /* Navbar padding bottom adjustment */
-  #navbar {
-    padding-bottom: 20px;
-  }
-
-  /* Adjust font size for BandE class */
-  .BandE {
-    font-size: 1.5rem;
-  }
-
-  /* Adjust font size for hero paragraph */
-  .hero p {
-    font-size: 1.2rem;
-  }
-
-  /* Adjust font size for message paragraph */
-  #msglng {
-    font-size: 1rem;
-  }
-
-  /* Adjust width and height of input elements */
-  #budget-tracker input[type="number"],
-  #budget-tracker input[type="date"],
-  #expense-tracker input[type="text"],
-  #expense-tracker input[type="number"],
-  #expense-tracker input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  /* Adjust width and height of buttons */
-  #budget-tracker button,
-  #expense-tracker button,
-  #add-expense-form button[type="submit"] {
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-}
-
-/* Media query for screens up to 480px width */
-@media only screen and (max-width: 480px) {
-  /* Hide the hero section */
-  .hero {
-    display: none;
-  }
-
-  /* Adjust container width and padding */
-  .container {
-    width: 100%;
-    padding: 10px;
-  }
-
-  /* Adjust navbar styles */
-  #navbar {
-    flex-direction: column;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    background-color: #8c1818;
-  }
-
-  /* Adjust profile image margin */
-  .profile-image {
-    margin-right: 0;
-  }
-
-  /* Adjust navbar title */
-  .navbar-title {
-    padding-left: 0;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-  }
-
-  /* Adjust font size for BandE class */
-  .BandE {
-    font-size: 1.5rem;
-  }
-
-  /* Adjust font size for hero paragraph */
-  .hero p {
-    font-size: 1.2rem;
-  }
-
-  /* Adjust font size for msglng */
-  #msglng {
-    font-size: 1rem;
-  }
-
-  /* Adjust width and margin for budget calendar and history */
-  #bgtCal,
-  #bg-his {
-    width: calc(100% - 10px);
-    margin-top: 20px;
-  }
-
-  /* Adjust padding and margin for budget tracker and expense tracker */
-  #budget-tracker,
-  #expense-tracker {
-    padding: 10px;
-  }
-
-  /* Adjust margin bottom for inputs and inline-ni */
-  #inputs,
-  .inline-ni {
-    margin-bottom: 10px;
-  }
-
-  /* Adjust padding bottom for navbar */
-  #navbar {
-    padding-bottom: 10px;
-  }
-
-  /* Adjust font size for BandE class */
-  .BandE {
-    font-size: 1.2rem;
-  }
-
-  /* Adjust font size for hero paragraph */
-  .hero p {
-    font-size: 1rem;
-  }
-
-  /* Adjust font size for msglng */
-  #msglng {
-    font-size: 0.9rem;
-  }
-
-  /* Adjust width and height of input elements */
-  #budget-tracker input[type="number"],
-  #budget-tracker input[type="date"],
-  #expense-tracker input[type="text"],
-  #expense-tracker input[type="number"],
-  #expense-tracker input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  /* Adjust width and height of buttons */
-  #budget-tracker button,
-  #expense-tracker button,
-  #add-expense-form button[type="submit"] {
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-}
-
-/* Media query for screens up to 360px width */
-@media only screen and (max-width: 360px) {
-  /* Hide the hero section */
-  .hero {
-    display: none;
-  }
-
-  /* Adjust container width and padding */
-  .container {
-    width: 100%;
-    padding: 10px;
-  }
-
-  /* Adjust navbar styles */
-  #navbar {
-    flex-direction: column;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    background-color: #8c1818;
-  }
-
-  /* Adjust profile image margin */
-  .profile-image {
-    margin-right: 0;
-  }
-
-  /* Adjust navbar title */
-  .navbar-title {
-    padding-left: 0;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-  }
-
-  /* Adjust font size for BandE class */
-  .BandE {
-    font-size: 1.2rem;
-  }
-
-  /* Adjust font size for hero paragraph */
-  .hero p {
-    font-size: 1rem;
-  }
-
-  /* Adjust font size for msglng */
-  #msglng {
-    font-size: 0.9rem;
-  }
-
-  /* Adjust width and margin for budget calendar and history */
-  #bgtCal,
-  #bg-his {
-    width: calc(100% - 10px);
-    margin-top: 20px;
-  }
-
-  /* Adjust padding and margin for budget tracker and expense tracker */
-  #budget-tracker,
-  #expense-tracker {
-    padding: 10px;
-  }
-
-  /* Adjust margin bottom for inputs and inline-ni */
-  #inputs,
-  .inline-ni {
-    margin-bottom: 10px;
-  }
-
-  /* Adjust padding bottom for navbar */
-  #navbar {
-    padding-bottom: 10px;
-  }
-
-  /* Adjust font size for BandE class */
-  .BandE {
-    font-size: 1.2rem;
-  }
-
-  /* Adjust font size for hero paragraph */
-  .hero p {
-    font-size: 1rem;
-  }
-
-  /* Adjust font size for msglng */
-  #msglng {
-    font-size: 0.9rem;
-  }
-
-  /* Adjust width and height of input elements */
-  #budget-tracker input[type="number"],
-  #budget-tracker input[type="date"],
-  #expense-tracker input[type="text"],
-  #expense-tracker input[type="number"],
-  #expense-tracker input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  /* Adjust width and height of buttons */
-  #budget-tracker button,
-  #expense-tracker button,
-  #add-expense-form button[type="submit"] {
-    width: 100%;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
   }
 }

@@ -39,7 +39,7 @@
 
             </div>
             <div id="register-form" class="form-container" style="display: none;">
-                <h2>Register</h2>
+                <h2 id="btn_login">Register</h2>
                 <form action="../hm/form/register.php" method="post">
                     <input type="text" name="username" placeholder="Username" required><br>
                     <input type="email" name="email" placeholder="Email" required><br>
@@ -48,7 +48,7 @@
                     <button type="submit">Register</button>
                 </form>
                 <div class="switch-form">
-                    <p>Already have an account? <button onclick="showLoginForm()">Login</button></p>
+                    <p id="dontACc">Already have an account? <button onclick="showLoginForm()">Login</button></p>
                 </div>
             </div>
         </div>
