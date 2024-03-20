@@ -3,7 +3,7 @@
 
 <head>
     <title>Login and Registration</title>
-    <meta http-equiv="Cache-control" content="no-cache">
+
     <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -33,6 +33,8 @@
                             id="btn_reg">Register</button></p>
                 </div>
             </div>
+
+
             <div id="register-form" class="form-container" style="display: none;">
                 <h2 id="btn_login">Register</h2>
                 <form action="../hm/form/register.php" method="post">

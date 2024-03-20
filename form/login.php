@@ -6,8 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
         $usernameOrEmail = $_POST["username"];
         $password = $_POST["password"];
-
-        // Database connection
+        
         $dsn = 'mysql:host=localhost;dbname=db_bgt';
         $username_db = 'root';
         $password_db = '';
@@ -20,20 +19,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             $pdo = new PDO($dsn, $username_db, $password_db, $options);
 
-            // Check if username or email exists
+            
             $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :usernameOrEmail OR email = :email");
 
             $stmt->execute([
                 'usernameOrEmail' => $usernameOrEmail,
-                'email' => $usernameOrEmail // Pass the same value for email
+                'email' => $usernameOrEmail 
             ]);
 
             $user = $stmt->fetch();
 
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['login_success'] = true; // Set session variable for successful login
-                sleep(1.5);
+                $_SESSION['login_success'] = true;
+            
                 header("Location:../functions/bgt.php");
                 exit;
             } else {
@@ -47,6 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Echo the error message only when there's an error
+
 echo $errorMessage;
 ?>
