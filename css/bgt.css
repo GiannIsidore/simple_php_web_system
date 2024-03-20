@@ -143,7 +143,7 @@ body {
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   display: inline-flex;
   justify-content: space-evenly;
-  width: auto;
+  width: 100%;
 }
 #bgt_out {
   width: 77%;

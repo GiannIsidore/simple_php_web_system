@@ -11,21 +11,21 @@ if (!isset($_GET['expense_id'])) {
     exit("Expense ID is missing");
 }
 
-// Database connection
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "db_bgt";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch expense details
+
 $expenseId = $_GET['expense_id'];
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM expenses WHERE id = ? AND user_id = ?";
@@ -35,7 +35,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows == 1) {
-    // Expense found, display edit form
+    
     $expense = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -69,7 +69,7 @@ if ($result->num_rows == 1) {
 </html>
 <?php
 } else {
-    // Expense not found or unauthorized access
+    
     exit("Expense not found or unauthorized access");
 }
 

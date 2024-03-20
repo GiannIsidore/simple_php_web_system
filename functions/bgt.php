@@ -2,12 +2,12 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to login page if user is not logged in
+    
     header("Location: login.php");
     exit;
 }
 
-// Database connection
+
 $dsn = 'mysql:host=localhost;dbname=db_bgt';
 $username_db = 'root';
 $password_db = '';
@@ -20,18 +20,18 @@ $options = [
 try {
     $pdo = new PDO($dsn, $username_db, $password_db, $options);
 
-    // Retrieve user data based on user_id
+    
     $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :user_id");
     $stmt->execute(['user_id' => $_SESSION['user_id']]);
     $user = $stmt->fetch();
 
     if (!$user) {
-        // Redirect or display an error if user data is not found
+        
         echo "User data not found";
         exit;
     }
 
-    // Convert the profile image binary data to base64
+    
     $profile_image_base64 = base64_encode($user['profile_image']);
 
 } catch (PDOException $e) {
@@ -141,11 +141,11 @@ try {
             </div>
         </div>
 
-        <!-- Budget tracker -->
+
         <div id="budget-tracker">
             <div class='inline-ni' id="inputs">
                 <h2>Budget Tracker</h2>
-                <!-- Input fields for bgt -->
+
                 <label for="budget">Budget:&nbsp;&nbsp;&nbsp;&nbsp; </label>
                 <input type="number" id="budget" name="budget" required><br>
                 <label for="start-date">Start Date:</label>
@@ -153,7 +153,7 @@ try {
                 <label for="end-date">End Date:&nbsp;</label>
                 <input type="date" id="end-date" name="end-date" required><br>
                 <button id="save-budget">Save Budget</button><br>
-                <!-- Buttons bgt-->
+
                 <button id="show-calendar">Show Budget Distribution Calendar</button><br>
                 <button id="show-history">Show Budget History</button>
             </div>
@@ -172,15 +172,14 @@ try {
                 </div>
 
             </div>
-            <!-- Budget calendar and history -->
 
         </div>
 
-        <!-- Expense tracker -->
+
         <div id="expense-tracker">
             <div>
                 <h2>Expense Tracker</h2>
-                <!-- Input fields for exp -->
+
                 <form id="add-expense-form" action="add_expense.php" method="post">
                     <label for="expense-name">Expense Name:</label>
                     <input type="text" id="expense-name" name="expense-name" required><br>
@@ -191,7 +190,7 @@ try {
                     <label for="purchase-date">Purchase Date:</label>
                     <input type="date" id="purchase-date" name="purchase-date" required><br>
 
-                    <!-- Hidden input field to store user ID -->
+
                     <input type="hidden" id="user-id" name="user-id" value="<?php echo $_SESSION['user_id']; ?>">
 
                     <button type="submit" id="add-expense">Add Expense</button>
@@ -199,7 +198,7 @@ try {
             </div>
 
 
-            <!-- exp table -->
+
             <table id="expense-table">
                 <thead>
                     <tr>

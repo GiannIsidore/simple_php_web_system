@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
-
+    $error_message2 = "";
     try {
         $pdo = new PDO($dsn, $username_db, $password_db, $options);
 
@@ -24,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $existingUser = $stmt->fetch();
 
         if ($existingUser) {
-            echo "Username or email already exists.";
+            $error_message2 = "Username or Email already existed";
+            header("Location: ../index.php");
         } else {
             
             $stmt = $pdo->prepare("INSERT INTO users (username,full_name, email, password) VALUES (:username,:full_name, :email, :password)");

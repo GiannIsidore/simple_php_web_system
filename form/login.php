@@ -1,5 +1,6 @@
 <?php
 session_start();
+$errorMessage = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
@@ -36,15 +37,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location:../functions/bgt.php");
                 exit;
             } else {
-                echo "Invalid username/email or password";
+                $errorMessage = "Incorrect Username or Password";
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            $errorMessage = "Error: " . $e->getMessage();
         }
     } else {
-        echo "Username/email or password not provided";
+        $errorMessage = "Username/email or password not provided";
     }
-} else {
-    echo "Invalid request method";
 }
+
+// Echo the error message only when there's an error
+echo $errorMessage;
 ?>
